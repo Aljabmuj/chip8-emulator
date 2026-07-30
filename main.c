@@ -21,29 +21,22 @@ uint8_t fontsize = {
     0xE0, 0x90, 0x90, 0x90, 0xE0, //D
     0xF0, 0x80, 0xF0, 0x80, 0xF0, //E
     0xF0, 0x80, 0xF0, 0x80, 0x80, //F
-};
+};  
 
 typedef struct{ 
     uint8_t mem[4096]; //set up 4096 bytes of RAM 
     uint8_t reg[16]; //16 8-bit registers 
-
-    //create stack and stack pointer 
-    uint16_t stack[16]; 
-    uint8_t stack_p; 
-
+    uint16_t stack[16];  //create stack and stack pointer 
+    uint8_t sp; 
     uint16_t index; //index register
     uint16_t pc;    //program counter 
-
     uint8_t delay_timer; //use for handling audio output
     uint8_t sound_timer; 
-    
-
     uint8_t keypad[16]; //set up keypad for user input 
     uint32_t video[64*32]; //set up video output of 64 x 32 for SDL 2 graphcis buffer 
     
     uint16_t opcode; //current opcode 
-
-} Chip_8; 
+} Chip8; 
 
 //clear memory function
 int clear_mem(Chip_8 *chip8){ 
