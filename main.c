@@ -1,10 +1,12 @@
-#include <SDL.h>
+#include <SDL3/SDL.h>
+#include <SDL3/SDL_main.h>
 #include <stdio.h>
 #include <string.h>
+#include <stdint.h>
 
 //initialize the chip-8 font as a global variable
 
-uint8_t fontsize = {
+uint8_t fontsize[] = {
     0xF0, 0x90, 0x90, 0x90, 0xF0, //0
     0x20, 0x60, 0x20, 0x20, 0x70, //1
     0xF0, 0x10, 0xF0, 0x80, 0xF0, //2 
@@ -34,12 +36,11 @@ typedef struct{
     uint8_t sound_timer; 
     uint8_t keypad[16]; //set up keypad for user input 
     uint32_t video[64*32]; //set up video output of 64 x 32 for SDL 2 graphcis buffer 
-    
     uint16_t opcode; //current opcode 
-} Chip8; 
+} Chip_8; 
 
 //clear memory function
-int clear_mem(Chip_8 *chip8){ 
+void clear_mem(Chip_8 *chip8){ 
 
     memset(chip8, 0, sizeof(Chip_8));
 
@@ -56,28 +57,36 @@ void chip8_init(Chip_8 *chip8){
     //set the pc to start at 0x200
     chip8->pc = 0x200;
 
-    for(int i = 0; i < 80; i++){ 
-        chip8->mem[0x50+i] = fontsize[i]; 
-    }
+    // for(int i = 0; i < 80; i++){ 
+    //     // chip8->mem[0x50+i] = *fontsize[i]; 
+    // }
 
 }
 
 //load up roms using fopen and fclose 
 int rom_load(){
+    return 0; 
 
 }
 
 //create three loops: Fetch, Decode, and Execute
 
 int fetch(){ 
+    return 0; 
 
 
 }
 
 int decode(){ 
+    return 0;
 
 }
 
 int execute(){ 
+    return 0; 
 
+}
+
+int main(int argc, char* argv[]){
+    return 0;
 }
